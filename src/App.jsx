@@ -30,20 +30,20 @@ function App() {
             setLoading(false);
             // console.log(images);
 
-            const data = JSON.parse(localStorage.getItem("savedImages"))
+            const data = JSON.parse(localStorage.getItem("savedImages"));
             if (data) {
-                setSaved(data)
+                setSaved(data);
             }
         };
         fetchImage();
     }, [search, setSaved]);
 
     useEffect(() => {
-        if(saved.length !== 0){
-            const savedImages = JSON.stringify(saved)
-            localStorage.setItem("savedImages", savedImages)
-        } 
-    },[saved])
+        if (saved.length !== 0) {
+            const savedImages = JSON.stringify(saved);
+            localStorage.setItem("savedImages", savedImages);
+        }
+    }, [saved]);
 
     // console.log(search)
     // console.log("savd images", saved)
@@ -65,7 +65,10 @@ function App() {
                             />
                         }
                     />
-                    <Route path="/saved" element={<Saved saved={saved} loading={loading} />} />
+                    <Route
+                        path="/saved"
+                        element={<Saved saved={saved} loading={loading} />}
+                    />
                 </Routes>
             </Router>
         </>
